@@ -1,0 +1,38 @@
+source:
+  type: unity-catalog
+  config:
+    workspace_url: https://55801*********.4.azure.databricks.com
+    token: "dapia1711ad*******************"
+    metastore_id_pattern:
+      allow:
+        - metastore-id
+    catalog_pattern:
+      allow:
+        - metastore-id.main
+      deny:
+        - metastore-id.system
+    schema_pattern:
+      allow:
+        - metastore-id.main.cart
+      deny:
+        - metastore-id.main.information_schema
+        - metastore-id.main.default
+    table_pattern:
+      allow:
+        - main.cart.cart_data
+        - main.cart.user_activity_data
+      deny:
+        - main.cart.top_cart_product_data
+
+    include_column_lineage: true
+    enable_stateful_profiling: true
+    format_sql_queries: true
+    include_operational_stats: true
+    include_ownership: true
+    include_top_n_queries: true
+    include_usage_statistics: true
+
+    stateful_ingestion:
+      enabled: true
+
+pipeline_name: ingesting-databricks-unity-catalog-data
